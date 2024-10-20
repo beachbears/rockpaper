@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,75 @@
 </body>
 
     <script>
+         
+         let humanScore = 0; 
+         let computerScore = 0;
+       
+        function getComputerChoice() {
+            let random = Math.floor(Math.random() * 3);
+            let choice; 
 
-    </script>
+            if (random === 0) {
+                choice = 'rock';
+            } else if (random === 1) {
+                choice = 'paper';
+            } else {
+                choice = 'scissor';
+            }
+              return choice;
+        }
+
+        function getHumanChoice() {
+                let sign = prompt("Choose your power 'rock, paper, scissor' ").toLowerCase(); 
+                return sign;  
+        }
+
+
+        function playRound(humanChoice, computerChoice) {
+         if (computerChoice === 'paper' && humanChoice === 'rock') {
+             console.log("Computer choose " + computerChoice.toUpperCase() + " and you choose " + humanChoice.toUpperCase() + ", you lose!");
+             computerScore++;
+         } else if (computerChoice === 'paper' && humanChoice === 'scissor') {
+            console.log("Computer choose " + computerChoice.toUpperCase() + " and you choose " + humanChoice.toUpperCase() + ", you won!");
+             humanScore++;
+         } else if (computerChoice === 'rock' && humanChoice === 'paper') {
+            console.log("Computer choose " + computerChoice.toUpperCase() + " and you choose " + humanChoice.toUpperCase() + ", you won!");
+            humanScore++;
+         } else if (computerChoice === 'rock' && humanChoice === 'scissor') {
+            console.log("Computer choose " + computerChoice.toUpperCase() + " and you choose " + humanChoice.toUpperCase() + ", you lose!");
+            computerScore++;
+         } else if (computerChoice === 'scissor' && humanChoice === 'paper') {
+            console.log("Computer choose " + computerChoice.toUpperCase() + " and you choose " + humanChoice.toUpperCase() + ", you lose!");
+            computerScore++;
+         } else if (computerChoice === 'scissor' && humanChoice === 'rock') {
+            console.log("Computer choose " + computerChoice.toUpperCase() + " and you choose " + humanChoice.toUpperCase() + ", you won!");
+            humanScore++;
+         } else if (computerChoice === humanChoice ) {
+            console.log("Computer choose " + computerChoice.toUpperCase() + " and you choose " + humanChoice.toUpperCase() + ", it's a draw!");
+         } else 
+           console.log("Invalid input, try again. :>");
+           console.log("Score:\nComputer: " + computerScore + "\nYou: " + humanScore);
+        }
+        
+        
+        function playGame() {
+            while (humanScore < 5 && computerScore < 5) {
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+                playRound(humanSelection, computerSelection);
+            }   
+
+            if (computerScore === 5) {
+                console.log("You lose computer win");
+            } else if (humanScore === 5) {
+                console.log("You win!, Congratulations!");
+            } 
+        }
+          
+ playGame();
+        
+        
+    
+          </script>
 </html>
+        
